@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayberry Investments - Knowledge Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --theme-color: #3C4694;
+            --theme-color-darker: #2d3572;
+            --theme-color-lighter: #5A67D8; /* A lighter shade for accents if needed */
+            --text-light: #F7FAFC; /* gray-100 */
+            --text-dark: #2D3748; /* gray-800 */
+        }
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: #F9FAFB; /* A very light gray background */
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .header-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--theme-color);
+        }
+        .hero-section {
+            background: linear-gradient(135deg, var(--theme-color) 0%, var(--theme-color-lighter) 100%);
+            color: var(--text-light);
+        }
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800; /* Extra bold for impact */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+        }
+        .cta-button {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FFFFFF; /* White button on dark hero */
+            color: var(--theme-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .cta-button:hover {
+            background-color: #F0F4FF; /* Slightly off-white on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .footer {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #EDF2F7; /* gray-200 */
+            color: #4A5568; /* gray-600 */
+        }
+        .logo-img {
+            max-height: 50px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+
+    <header class="py-6 bg-white shadow-sm">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://placehold.co/180x50/3C4694/FFFFFF?text=Mayberry&font=montserrat" alt="Mayberry Investments Logo" class="logo-img mr-3"
+                     onerror="this.onerror=null; this.src='https://placehold.co/180x50/3C4694/FFFFFF?text=Mayberry&font=montserrat'; this.alt='Mayberry Logo Placeholder';">
+            </div>
+            <span class="header-title text-xl md:text-2xl">Internal Knowledge Hub</span>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <section class="hero-section py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl hero-title mb-6">
+                    Welcome to the Mayberry Knowledge Hub
+                </h1>
+                <p class="text-lg md:text-xl hero-subtitle mb-10 max-w-3xl mx-auto">
+                    Your central resource for processes, documentation, and operational insights.
+                </p>
+                <a href="cambio-overview.html"
+                   class="cta-button font-semibold py-3 px-8 rounded-lg text-lg inline-block">
+                    Explore Cambio Knowledge Base
+                </a>
+            </div>
+        </section>
+
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-4 header-title">Key Resources</h2>
+                <p class="text-gray-600 mb-12 max-w-2xl mx-auto">
+                    Quickly access important information and tools.
+                </p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <h3 class="text-xl font-semibold mb-3" style="color: var(--theme-color-darker); font-family: 'Montserrat', sans-serif;">Cambio Processes</h3>
+                        <p class="text-gray-600 mb-4">Detailed breakdown of all foreign exchange operations, approvals, and system interactions.</p>
+                        <a href="cambio-overview.html#highLevelProcesses" class="font-semibold hover:underline" style="color: var(--theme-color);">Learn More &rarr;</a>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <h3 class="text-xl font-semibold mb-3" style="color: var(--theme-color-darker); font-family: 'Montserrat', sans-serif;">System Guides</h3>
+                        <p class="text-gray-600 mb-4">Information on CMP, CRM, and Client Portal functionalities relevant to Cambio operations.</p>
+                        <a href="cambio-overview.html#applications" class="font-semibold hover:underline" style="color: var(--theme-color);">View Applications &rarr;</a>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <h3 class="text-xl font-semibold mb-3" style="color: var(--theme-color-darker); font-family: 'Montserrat', sans-serif;">FAQs & Risks</h3>
+                        <p class="text-gray-600 mb-4">Quick answers to common questions and an overview of identified operational and technical risks.</p>
+                        <a href="cambio-overview.html#faq" class="font-semibold hover:underline" style="color: var(--theme-color);">See FAQs & Risks &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer py-8 text-center">
+        <div class="container mx-auto px-6">
+            <p>&copy; <span id="currentYear"></span> Mayberry Investments Limited. All Rights Reserved.</p>
+            <p class="text-sm mt-1">Internal Use Only</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
