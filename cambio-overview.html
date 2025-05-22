@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayberry Investment Limited - Cambio Knowledge Base</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --theme-color: #3C4694;
+            --theme-color-darker: #2d3572;
+            --theme-color-text-on-dark: #E0E7FF;
+            --theme-color-text-on-light-active: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            scroll-behavior: smooth;
+            color: #374151; /* gray-700 */
+            line-height: 1.7;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .search-highlight {
+            background-color: #FDE047; /* yellow-400 */
+            font-weight: bold;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a8a29e; /* stone-400 */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #78716c; /* stone-500 */
+        }
+
+        .sidebar-link {
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.2s ease-in-out;
+            color: #4b5563; /* gray-600 */
+        }
+        .sidebar-link:hover {
+            background-color: #E0E7FF;
+            color: var(--theme-color-darker);
+            transform: translateX(2px);
+        }
+        .sidebar-link.active-link {
+            background-color: var(--theme-color);
+            color: var(--theme-color-text-on-light-active);
+            font-weight: 600;
+        }
+
+        header {
+            background-color: var(--theme-color);
+        }
+        header h1 {
+             font-family: 'Montserrat', sans-serif;
+             font-weight: 700;
+        }
+        .header-subtext {
+            color: var(--theme-color-text-on-dark);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        input[type="text"] {
+            font-family: 'Inter', sans-serif;
+            border-color: #D1D5DB; /* gray-300 */
+        }
+        input[type="text"]:focus {
+            --tw-ring-color: var(--theme-color) !important;
+            border-color: var(--theme-color) !important;
+        }
+        button#searchButton { /* Removed .gemini-summary-button from this rule */
+            font-family: 'Inter', sans-serif;
+            background-color: var(--theme-color);
+            color: white;
+        }
+        button#searchButton:hover { /* Removed .gemini-summary-button from this rule */
+            background-color: var(--theme-color-darker);
+        }
+
+        .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--theme-color-darker);
+            font-weight: 600;
+        }
+        .prose h2 { border-bottom-color: #D1D5DB; /* gray-300 */ }
+        .prose ul { margin-left: 1.5em; list-style-type: disc; margin-bottom: 0.75em;}
+        .prose li { margin-bottom: 0.25em;}
+        .prose code { background-color: #f3f4f6; padding: 0.2em 0.4em; border-radius: 4px; font-family: 'Menlo', 'Consolas', monospace; }
+        .prose pre { background-color: #f3f4f6; padding: 1em; border-radius: 8px; overflow-x: auto; margin-bottom: 1em;}
+
+        .faq-item { margin-bottom: 1.5em; }
+        .faq-question { font-weight: 700; font-family: 'Montserrat', sans-serif; color: var(--theme-color-darker); }
+        .faq-answer { margin-top: 0.25em; padding-left: 1em; border-left: 2px solid var(--theme-color); }
+        .priority-high { color: #D97706; font-weight: bold; }
+        .priority-medium { color: #F59E0B; font-weight: bold; }
+        .priority-low { color: #10B981; font-weight: bold; }
+
+        /* Audio Player Styles */
+        .audio-player-container {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f9fafb; /* gray-50 */
+            border: 1px solid #e5e7eb; /* gray-200 */
+            border-radius: 0.5rem;
+        }
+        .audio-player-container audio {
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+    <header class="text-white p-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center">
+            <h1 class="text-xl sm:text-2xl text-center sm:text-left">Mayberry Cambio Knowledge Base</h1>
+            <div class="mt-3 sm:mt-0 flex items-center space-x-2 w-full sm:w-auto">
+                <input type="text" id="searchInput" placeholder="Search knowledge base..." class="p-2 rounded-md border text-slate-800 focus:ring-2 transition-all flex-grow sm:flex-grow-0 sm:w-64">
+                <button id="searchButton" class="text-white font-semibold py-2 px-4 rounded-md transition-colors">Search</button>
+            </div>
+        </div>
+        <div class="container mx-auto text-xs mt-1 header-subtext text-center sm:text-left">Version: 1.2 | Date: May 21, 2025</div>
+    </header>
+
+    <div class="container mx-auto flex flex-col md:flex-row mt-6 p-4 gap-6">
+
+        <aside id="sidebar" class="w-full md:w-1/4 bg-white p-4 rounded-xl shadow-xl h-fit md:sticky md:top-28">
+            <h2 class="text-xl font-semibold mb-4 pb-2 border-b" style="color: var(--theme-color-darker); font-family: 'Montserrat', sans-serif;">Sections</h2>
+            <nav id="navLinks" class="space-y-1.5">
+                <a href="#introduction" class="block p-2.5 rounded-md sidebar-link">Introduction</a>
+                <a href="#participants" class="block p-2.5 rounded-md sidebar-link ml-3 text-sm">Participants</a>
+                <a href="#audioResources" class="block p-2.5 rounded-md sidebar-link">Podcast</a>
+                <a href="#highLevelProcesses" class="block p-2.5 rounded-md sidebar-link">High-Level Processes</a>
+                <a href="#applications" class="block p-2.5 rounded-md sidebar-link ml-3 text-sm">Internal Applications</a>
+                <a href="#detailedProcesses" class="block p-2.5 rounded-md sidebar-link">Detailed Processes</a>
+                <a href="#detailedOverview" class="block p-2.5 rounded-md sidebar-link ml-3 text-sm">Overview of Operations</a>
+                <a href="#detailedOrderInitiation" class="block p-2.5 rounded-md sidebar-link ml-3 text-sm">Order Initiation & Processing</a>
+                <a href="#detailedSpecificTransactions" class="block p-2.5 rounded-md sidebar-link ml-3 text-sm">Specific Transaction Types</a>
+                <a href="#detailedCompliance" class="block p-2.5 rounded-md sidebar-link ml-3 text-sm">Compliance Involvement</a>
+                <a href="#detailedReporting" class="block p-2.5 rounded-md sidebar-link ml-3 text-sm">Reporting & Reconciliation</a>
+                <a href="#detailedDbSchema" class="block p-2.5 rounded-md sidebar-link ml-3 text-sm">Database Schema Highlights</a>
+                <a href="#detailedCodebase" class="block p-2.5 rounded-md sidebar-link ml-3 text-sm">Codebase Highlights</a>
+                <a href="#risks" class="block p-2.5 rounded-md sidebar-link">Risks & Improvements</a>
+                <a href="#faq" class="block p-2.5 rounded-md sidebar-link">FAQ</a>
+                <a href="#conclusion" class="block p-2.5 rounded-md sidebar-link">Conclusion</a>
+            </nav>
+        </aside>
+
+        <main id="contentArea" class="w-full md:w-3/4 bg-white p-6 sm:p-8 rounded-xl shadow-xl prose max-w-none">
+            <section id="introduction-content" class="content-section active">
+                <h2>Introduction</h2>
+                <p>This document provides a consolidated and detailed overview of Mayberry Investment Limited's Cambio processes, systems, and associated operational aspects. It is based on information from version 1.2 of the "Mayberry Investment Limited - Consolidated Cambio Processes" document dated May 21, 2025, and aims to serve as a comprehensive knowledge dictionary for the IT team and other relevant stakeholders. The goal is to facilitate understanding, support, and potential improvements to the Cambio operations.</p>
+            </section>
+
+            <section id="audioResources-content" class="content-section">
+                <h2>Audio Resources</h2>
+                <p>This section provides access to relevant audio files, such as recordings of process explanations or team meetings related to Cambio operations.</p>
+                <div class="audio-player-container">
+                    <h4 class="text-md font-semibold mb-2">Cambio Process Overview (Recording)</h4>
+                    <audio controls>
+                        <source src="https://tuteckindia.sharepoint.com/:u:/s/MayberryKnowledgeBase/Ed1Fnx67UudHhdVb8RiLOVQBvHs71wgivQLVCfRxtmif5A?e=R5PHIL" type="audio/mpeg">
+                        Your browser does not support the audio element. Please update your browser or use a different one to listen to this recording.
+                    </audio>
+                    <p class="text-sm text-gray-600 mt-2">
+                        Description: This audio file contains a detailed walkthrough of the end-to-end Cambio order lifecycle, including common scenarios and exceptions. (Duration: 29:13)
+                    </p>
+                </div>
+                <!--
+                <div class="audio-player-container mt-4">
+                    <h4 class="text-md font-semibold mb-2">Topic XYZ (Recording)</h4>
+                    <audio controls>
+                        <source src="ANOTHER_AUDIO_FILE.ogg" type="audio/ogg">
+                        Your browser does not support the audio element.
+                    </audio>
+                     <p class="text-sm text-gray-600 mt-2">
+                        Description: Brief description of this audio file. (Duration: YY:YY)
+                    </p>
+                </div>
+                -->
+            </section>
+
+            <section id="participants-content" class="content-section">
+                <h2>Participants Mentioned</h2>
+                <p>The following individuals and teams are involved in or interact with the Cambio processes, based on the provided documentation:</p>
+                <h3>Mayberry Investment Bank:</h3>
+                <ul>
+                    <li><strong>Executive/Management:</strong> Philip Hamilton, Paul Brissett, Peter L. Fraser (likely IT/Management).</li>
+                    <li><strong>Operations:</strong> Nicole Walfall-Wyatt (VP Operations), Andrea Ho-Sang (Operations Head), Odane Powell, April Green (Operations/Settlements), DawnMarie Williams (Operations/Payments), Tian Dowlatt, Jon Ambos, Abigail Bond. This team handles rate input, "Pay to Cambio" workarounds, payment/receipt creation in CRM, and TVQ processing.</li>
+                    <li><strong>Asset Management:</strong> Damian Whylie, Brian Munroe, Kaysecia Hamilton. This team utilizes the Cambio module for FX transactions related to managed portfolios or Mayberry's proprietary activities.</li>
+                    <li><strong>Compliance:</strong> Jerome Weir, Raj Fogarthy. This team reviews and approves/rejects trades flagged for compliance, monitors transactions, and handles World Check alerts.</li>
+                    <li><strong>Risk:</strong> Monique Sterling. Involved in risk oversight related to Cambio operations.</li>
+                    <li><strong>Markets & Trading / Treasury:</strong> Vaughn Cunningham (Markets & Trading/Cambio Manager), Karen Mitchell, Victoria Parague, Mark Ormsby (Treasury/Markets & Trading). This team approves orders exceeding limits or requiring custom rates, sets daily Board and Contract rates, manages Mayberry's FX position, and executes cross-currency trades.</li>
+                    <li><strong>Sales & Client Relations:</strong> Okelia Parredon (Sales Head), Asha Smellie (Sales), Nikesha Solomon (Sales/Client Relations). This team initiates Cambio orders for clients, handles client communication, and may request custom rates from Treasury.</li>
+                </ul>
+                <h3>Recipient Team (for Knowledge Transfer):</h3>
+                <ul>
+                    <li>Arnab Pal</li>
+                    <li>Shweta Prasad</li>
+                    <li>Suman Sengupta</li>
+                </ul>
+            </section>
+
+            <section id="applications-content" class="content-section">
+                <h2>Internal Applications</h2>
+                <p>Several internal applications are crucial for Cambio operations:</p>
+                <h3>CMP (Customer Management Portal) / BFMS (Brokerage Financial Management Suite)</h3>
+                <p>This is the primary application for managing a wide range of operational activities, including but not limited to:</p>
+                <ul>
+                    <li>Trading across various asset classes: Equity, Cambio (Foreign Exchange), Fixed Income, MMEP.</li>
+                    <li>Initiation and processing of payment requests.</li>
+                    <li>Specific Cambio functionalities: Order entry, rate management, approval workflows, BOJ surrender processing, blotter viewing.</li>
+                    <li><strong>Technical Stack:</strong>
+                        <ul>
+                            <li>Backend: PHP/Laravel framework.</li>
+                            <li>Frontend: Angular.</li>
+                            <li>Database: MariaDB hosted on AWS RDS.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <h3>CRM (Customer Relationship Management Portal)</h3>
+                <p>The CRM is utilized for several key functions that support Cambio and other operations:</p>
+                <ul>
+                    <li>Managing comprehensive client information and profiles.</li>
+                    <li>Handling accounting-related activities, including General Ledger (GL) and sub-ledger entries for financial transactions.</li>
+                    <li>Providing views of client positions and holdings.</li>
+                    <li>Generating certain types of reports, particularly for accounting and settlement reconciliation.</li>
+                    <li>Facilitating the creation of payments and receipts for settling Cambio trades after execution in CMP.</li>
+                </ul>
+                <h3>CP (Client Portal) & Mobile App</h3>
+                <p>These client-facing platforms empower Mayberry's clients to:</p>
+                <ul>
+                    <li>Manage their investment accounts securely.</li>
+                    <li>Perform sign-up and sign-in operations.</li>
+                    <li>Place various types of orders, including Cambio (FX) orders.</li>
+                    <li>Submit requests for services such as client detail updates or payment requests.</li>
+                    <li>Access live trading functionalities for FX outside standard market hours.</li>
+                </ul>
+            </section>
+
+            <section id="highLevelProcesses-content" class="content-section">
+                <h2>High-Level Cambio Processes</h2>
+                <p>This section outlines the primary categories of Cambio-related processes within Mayberry Investment Limited.</p>
+                <h3>1.1. Major Processes:</h3>
+                <ul>
+                    <li><strong>FX Order Initiation, Approval, and Execution (JMD vs. FCY & Cross-Currency):</strong> This encompasses the complete lifecycle of a foreign exchange order. It begins with an order placed by a client (via Client Portal/App) or Mayberry staff (in CMP). The process involves capturing order details, rate determination, and a multi-layered approval chain. Approvals may be required from Compliance (for AML/CFT checks, high-risk clients), Markets & Trading/Treasury (for rates, limits, or custom requests), and often includes client OTP verification for orders placed or modified by staff. Final execution leads to accounting entries and settlement procedures involving both CMP and CRM systems.</li>
+                    <li><strong>BOJ Surrender Processing:</strong> A regulatory requirement where Mayberry must calculate and surrender 15% of the previous day's total commercial FX purchases (from the public, excluding inter-broker trades) to the Bank of Jamaica. This is managed through a dedicated function within the CMP, involving manual rate and amount entry by Treasury/Markets team and subsequent payment processing.</li>
+                    <li><strong>Rate Management & Profit Calculation:</strong> This involves the daily manual input of various exchange rates into CMP. Operations Processing enters BOJ weighted average rates, while Treasury inputs Mayberry's Board Rates and Contract Rates. CMP uses these rates, particularly a derived "system rate" (median of BOJ rates), for the automated calculation of profit or loss on each Cambio trade executed.</li>
+                    <li><strong>Payment and Receipt Processing for FX Trades:</strong> This process deals with the financial settlement of executed FX trades. It involves managing both the JMD and Foreign Currency (FCY) legs of transactions. Activities include processing wire transfers (local and international), cheque payments, and internal account transfers between client accounts and Mayberry's accounts. These are managed via payment requests initiated in CMP and settlement functionalities within the CRM.</li>
+                </ul>
+                <h3>1.2. Minor Processes:</h3>
+                <ul>
+                    <li><strong>"Pay to Cambio" Workaround:</strong> A manual payment request initiated in CMP (More > Payment Request > Client Payment Request) to transfer JMD from a client's Mayberry investment account to Mayberry's dedicated Cambio bank account. This workaround is necessary because the intended direct debit functionality for funding Cambio trades from client portfolios within CMP is currently non-functional. It adds extra steps and approvals to the process.</li>
+                    <li><strong>Live Trading Order Management:</strong> This facilitates client-initiated FX trades placed via the Client Portal or Mobile App outside of Mayberry's standard FX trading hours. These trades use pre-set "live trading" rates stored in <code>cambio_live_rates</code>, which are typically less favorable to the client than standard rates. This feature is reportedly not very actively used.</li>
+                    <li><strong>Order Cancellation & Deletion:</strong> This covers the procedures for handling client or staff-initiated cancellations of unexecuted FX orders (which can be soft-deleted in CMP by authorized staff). It also addresses the more complex process of deleting already executed orders, which currently requires formal requests to the IT vendor for database script execution, as direct reversal by staff in CMP is not possible.</li>
+                    <li><strong>Compliance Screening (World Check Integration):</strong> This involves automated and manual Anti-Money Laundering (AML) and Counter-Financing of Terrorism (CFT) screening. An API integration with World Check is used for live screening of beneficiary details for outgoing wire transfers. Manual reviews by the Compliance team occur for flagged transactions or high-risk clients.</li>
+                    <li><strong>Cambio-Related Reporting:</strong> This refers to the generation and utilization of various reports from both CMP (e.g., Transaction Summary, Blotter) and CRM (e.g., for accounting entries, settlement status). These reports are used for operational oversight, financial reconciliation, P&L tracking by Markets & Trading, and compliance monitoring. Ad-hoc reports are sometimes requested from IT.</li>
+                </ul>
+            </section>
+
+            <section id="detailedProcesses-content" class="content-section">
+                <h2>Detailed Cambio Processes</h2>
+                <p>This section provides a granular breakdown of Cambio operations, integrating information from all provided transcripts and documents. <em>(Content for sub-sections like Overview, Order Initiation, etc., will be displayed when those specific links are clicked.)</em></p>
+            </section>
+
+            <section id="detailedOverview-content" class="content-section">
+                <h3>2.1. Overview of Cambio Operations</h3>
+                <p><strong>Core Function:</strong> The Cambio module, primarily housed within the Customer Management Portal (CMP), serves as the central hub for Mayberry Investment Limited's foreign exchange (FX) services. It facilitates the buying and selling of major foreign currencies—chiefly USD, Pound Sterling (GBP), Canadian Dollar (CAD), and Euro (EUR)—against the Jamaican Dollar (JMD). Additionally, it supports cross-currency transactions (e.g., USD for EUR) for both Mayberry's clients and its own proprietary trading activities.</p>
+                <h4>Key Functionalities within CMP for Cambio:</h4>
+                <ul>
+                    <li><strong>Order Entry:</strong> Allows staff or clients (via portal) to capture comprehensive details for FX buy/sell orders. This includes client identification, the specific currency pair, transaction amount, selected rate type (board, contract, custom), desired settlement date, and detailed payment/receipt instructions for both JMD and FCY legs.</li>
+                    <li><strong>Rate Management Dashboard (Nav: Trade > Cambio > Cambio Dashboard):</strong> A critical interface for managing exchange rates.
+                        <ul>
+                            <li>Operations Processing team manually inputs daily BOJ weighted average buy/sell rates (non-cash USD) from the BOJ website into the <code>cambio_boj_rates</code> table.</li>
+                            <li>Treasury team manually inputs Mayberry's daily Board Rates (standard rates) into <code>cambio_daily_board_rates</code> and Contract Rates (for larger or specific deals) into <code>cambio_daily_contract_rates</code>. Live trading rates are stored in <code>cambio_live_rates</code>.</li>
+                            <li>The system internally calculates a "system rate" (typically the median of BOJ rates) which is used as a benchmark for internal profit/loss calculation on trades.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Approval Workflows:</strong> CMP manages multi-step approval processes for Cambio orders. These are particularly triggered for orders exceeding pre-defined financial limits, those using custom (negotiated) rates, or orders flagged for compliance reasons (e.g., high-risk client, World Check alert). Approvals involve various teams including Markets & Trading and Compliance.</li>
+                    <li><strong>Client OTP Verification:</strong> For security and authorization, CMP triggers and validates One-Time Passwords (OTPs) sent to clients. This is typically required for orders initiated or significantly modified by Mayberry staff on behalf of a client, ensuring client consent. Details are logged in <code>cr_otp_verification</code>.</li>
+                    <li><strong>BOJ Surrender Module (Nav: Cambio > BOJ Surrender > Place Order):</strong> A specialized interface within CMP designed for processing the mandatory daily surrender of 15% of commercial FX purchases to the Bank of Jamaica.</li>
+                    <li><strong>Blotter & Transaction Summaries (Nav: Cambio > Cambio Blotter, Cambio > Transaction Summary):</strong> Provides reporting capabilities, allowing users to view lists of executed trades (blotter) and aggregated summary reports on FX volumes, rates achieved, and calculated profits/losses over specified periods.</li>
+                    <li><strong>Integration with CRM:</strong> CMP is integrated with the CRM system via real-time API calls. Upon trade execution in CMP, accounting entries are posted to CRM. Conversely, settlement status updates from CRM (once funds are confirmed moved) are fed back to CMP.</li>
+                    <li><strong>World Check API Integration:</strong> For compliance, CMP has an automated API integration with World Check to perform AML/CFT screening on beneficiary details for outgoing wire transfers. Results are stored in <code>cambio_outgoing_wire_world_check</code>.</li>
+                </ul>
+                <h4>Interacting Teams:</h4>
+                <ul>
+                    <li><strong>Sales Team / Advisors (e.g., Okelia Parredon, Nikesha Solomon):</strong> Initiate Cambio orders for clients directly in CMP, manage client communication regarding FX needs, and may liaise with Treasury to request custom rates for clients.</li>
+                    <li><strong>Asset Management Team (e.g., Damian Whylie, Brian Munroe):</strong> Utilize the Cambio module within CMP to execute FX transactions necessary for managing their investment portfolios or for Mayberry's own proprietary trading activities.</li>
+                    <li><strong>Markets & Trading Team / Treasury (e.g., Vaughn Cunningham - Cambio Manager, Mark Ormsby, Karen Mitchell):</strong> Key approvers for orders exceeding limits or requiring custom rates. They set the daily Board and Contract rates, manage Mayberry's overall FX exposure and liquidity, and execute larger or more complex cross-currency trades. Mark Ormsby is noted for handling BOJ rate entries.</li>
+                    <li><strong>Operations Processing Team (e.g., Andrea Ho-Sang, April Green, DawnMarie Williams, Tian Dowlatt):</strong> Responsible for manually inputting BOJ rates into CMP, processing the "Pay to Cambio" workaround payments, creating payment/receipt entries in CRM to settle the JMD and FCY legs of Cambio trades, and managing the Transaction Verification Form (TVQ) process.</li>
+                    <li><strong>Compliance Team (e.g., Jerome Weir):</strong> Reviews and approves or rejects trades flagged for compliance reasons (e.g., high-risk client status, World Check alerts). They also monitor transactions for suspicious activity using system reports.</li>
+                    <li><strong>Clients:</strong> Can initiate Cambio orders themselves through the Client Portal (CP) or the mobile application. They also participate in OTP verification for staff-assisted trades.</li>
+                </ul>
+            </section>
+
+            <section id="detailedOrderInitiation-content" class="content-section">
+                <h3>2.2. Cambio Order Initiation and Processing</h3>
+                <h4>2.2.1. Order Entry (CMP Path: Trade > Cambio > Cambio Orders > New Trade Order / or via Client Portal)</h4>
+                <p><strong>Initiators:</strong> Orders can be initiated by:</p>
+                <ul>
+                    <li><strong>Clients:</strong> Directly via the Client Portal (CP) or the mobile app. These orders typically appear as 'New' requests in the CMP queue for staff attention.</li>
+                    <li><strong>Mayberry Staff:</strong> Sales Advisors, Client Relations personnel, or Asset Management team members can place orders on behalf of clients directly within the CMP interface.</li>
+                </ul>
+                <p><strong>Process and Details Captured in CMP:</strong></p>
+                <ol>
+                    <li><strong>Client Selection:</strong> Staff input the client's unique <code>account_number</code>. CMP then retrieves and auto-populates associated client details (e.g., name, email, TRN, phone number).
+                        <ul><li><em>Issue Noted:</em> Existence of duplicate client entries in the system with minor name variations but identical TRN/email, which can lead to selection errors.</li></ul>
+                    </li>
+                    <li><strong>Currency & Transaction Type:</strong> Selection of the currency pair (e.g., JMD/USD, USD/EUR) and specification of whether the client is buying or selling the primary foreign currency.</li>
+                    <li><strong>Exchange Rate (<code>exchange_rate</code> column in <code>cambio_orders</code> table):</strong>
+                        <ul>
+                            <li><strong>Rate Sources (Managed in CMP Path: Trade > Cambio > Cambio Dashboard):</strong>
+                                <ul>
+                                    <li><code>cambio_boj_rates</code> table: Stores Bank of Jamaica (BOJ) weighted average buy/sell rates (for non-cash USD). These are manually entered daily by the Operations Processing team based on data from the BOJ website. These rates are primarily used to derive the "system rate" (median) for internal P&L calculations.</li>
+                                    <li><code>cambio_daily_board_rates</code> table: Stores Mayberry's standard daily buy/sell rates, known as "Board Rates." These are manually updated daily by the Treasury department.</li>
+                                    <li><code>cambio_daily_contract_rates</code> table: Stores "Contract Rates," which are typically offered for larger transaction volumes (e.g., exceeding USD 2,000 for retail clients, or specific institutional thresholds) or for overnight/forward trades. These are also manually updated by Treasury.</li>
+                                    <li><code>cambio_live_rates</code> table: Stores specific rates applicable for "Live Trading" conducted by clients outside of standard market hours via the Client Portal/App.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Rate Application Logic:</strong>
+                                <ul>
+                                    <li>CMP typically auto-populates a rate (usually the Board Rate) upon new trade initiation.</li>
+                                    <li><strong>Custom Rate:</strong> Staff can request a custom rate (<code>exchange_rate_type</code> field set to 'Custom'). If the transaction amount surpasses a defined threshold (e.g., for retail clients, this is USD 2,000, a limit stored in the <code>env_properties</code> table; for institutional clients, limits are sourced from the <code>settlement_limit</code> table), this custom rate requires explicit approval from the Markets & Trading/Treasury team. The Sales team communicates with M&T for such requests.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Transaction Amount:</strong> The amount can be entered either in the foreign currency (e.g., <code>total_credit_amount</code> if the client is receiving FCY) or in JMD (e.g., <code>total_debit_amount</code> if the client is paying JMD). The system calculates the corresponding amount in the other currency based on the applied exchange rate.</li>
+                    <li><strong>Settlement Date (<code>value_date</code> column in <code>cambio_orders</code>):</strong> Defaults to T+0 (same-day settlement). Options for T+1 or T+2 settlement also exist. Importantly, the exchange rate applied is based on the trade initiation date, not the future settlement date.</li>
+                    <li><strong>Execution Platform (Flags in <code>cambio_orders</code> table):</strong>
+                        <ul>
+                            <li><code>executed_on_boj</code>: This flag is checked if the trade is intended to be executed with other brokers/Cambios or as part of BOJ interventions (meaning it will be settled at the BOJ).</li>
+                            <li><code>executed_on_citifx</code>: This flag is checked for cross-currency trades (e.g., EUR/USD), which are often settled via Mayberry's Citibank account.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Instructions for Funds (Source - <code>mil_instruction</code> column in <code>cambio_orders</code>):</strong> Specifies where Mayberry expects to receive funds from the client.
+                        <ul>
+                            <li><strong>Mayberry Cambio Account:</strong> Selected if the client is sending funds directly to Mayberry's designated Cambio bank account. The specific Mayberry bank account used by MIL for the trade is referenced by <code>mil_account_reference_id</code>.</li>
+                            <li><strong>Customer Account (Portfolio):</strong> This option, intended for enabling direct debit from the client's Mayberry investment account (portfolio cash), is <strong>NOT currently active/functional</strong>. This is a major operational issue that necessitates the "Pay to Cambio" workaround.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Instructions for Funds (Destination - <code>instruction</code> and <code>instruction_2</code> columns for multiple payouts):</strong> Specifies where the client wishes to receive their funds.
+                        <ul>
+                            <li><strong>Client's own Mayberry account:</strong> Funds are credited to the client's specified <code>portfolio_number</code> within Mayberry.</li>
+                            <li><strong>Client's external bank account (local/international):</strong> Details such as bank name, account number, branch, and recipient name are captured and stored in the <code>cambio_wire_detail</code> table. These details can be saved for future use by the client.</li>
+                            <li><strong>Cheque payment:</strong> Details for cheque payments are captured in the <code>cambio_cheque_transfer_details</code> table.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Wire Transfer Fees:</strong>
+                        <ul>
+                            <li>Option to <code>exclude_fee</code> (meaning Mayberry absorbs the fee, e.g., for NCB-to-NCB transfers where fees might be waived) or to deduct the applicable fee from the transaction amount payable to the client.</li>
+                            <li>Fee amounts are stored in various columns such as <code>cambio_fees</code>, <code>gct_fee</code> (General Consumption Tax on fees), <code>wire_fee_amount</code>, <code>cheque_fee_amount</code>.</li>
+                            <li>The <code>cambio_total_amount</code> usually represents the gross amount from the client (including fees if they are paying them), while <code>receivable_amount</code> is the net amount the client will receive after any deductions.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Documentation & Compliance Screening:</strong>
+                        <ul>
+                            <li>For "Pay to Cambio" requests (see section 2.3.3), client instructions (e.g., email PDF) and sometimes account statements showing sufficient JMD funds are uploaded in the Payments module associated with that workaround.</li>
+                            <li>For 3rd party payments (where Cambio proceeds are directed to someone other than the account holder), an indemnity form signed by the client is required and must be uploaded.</li>
+                            <li>The World Check API (endpoint: <code>POST /api/v1/world-check/screening-request</code>) is automatically called for live screening of wire transfer beneficiary details to check against sanctions lists and PEP databases. Results are stored in <code>cambio_outgoing_wire_world_check</code>.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Review and Place Order:</strong>
+                        <ul>
+                            <li>Staff or the client (on portal) reviews a summary screen displaying all entered details and calculated amounts.</li>
+                            <li>Clicking "Place Order" triggers the <code>initiateCambioOrder</code> function located in the <code>app/Services/CambioOrderService.php</code> file in the CMP backend.</li>
+                            <li>This service function performs several actions:
+                                <ul>
+                                    <li>Calculates applicable fees based on the transaction type and parameters.</li>
+                                    <li>Performs block trading checks using the <code>checkBlockTrading</code> function (to verify if the client account is restricted or flagged for compliance review).</li>
+                                    <li>Fetches the appropriate exchange rate based on the order details.</li>
+                                    <li>Inserts a new record into the main <code>cambio_orders</code> table.</li>
+                                    <li>Inserts related records into <code>cambio_wire_detail</code> or <code>cambio_cheque_transfer_details</code> if applicable.</li>
+                                    <li>If the transaction involves a wire transfer, it dispatches the <code>TransactionMonitoringJob</code>, which handles the asynchronous World Check API call.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>2.2.2. Approval Workflow</h4>
+                 <p>The approval flow for a Cambio order can vary based on its characteristics. A general sequence is as follows:</p>
+                 <ol>
+                    <li><strong>Initial Submission:</strong> The order is created and typically has an initial status of 'New' in the <code>cambio_orders.order_status</code> field.</li>
+                    <li><strong>Compliance Review (Conditional):</strong>
+                        <ul>
+                            <li>If the <code>checkBlockTrading</code> function flags the client's account (e.g., high-risk, KYC issues, other restrictions), or if the <code>world_check_status</code> (populated after the World Check API response for wire transfers) indicates a potential match or issue, the order is automatically routed to the Compliance team.</li>
+                            <li>The <code>block_order_status</code> in the <code>cambio_orders</code> table might be updated (e.g., to 'Pending Approval from Compliance').</li>
+                            <li>The Compliance team reviews these flagged orders in a dedicated queue or via a "Blocked Trades" screen within CMP. They then approve or reject the order based on their assessment.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Markets & Trading (Treasury) Approval (Conditional):</strong>
+                        <ul>
+                            <li>This approval step is required if the order amount exceeds defined limits (USD 2,000 for retail clients from <code>env_properties.value</code> where key is 'RETAIL_CAMBIO_LIMIT'; institutional client limits are sourced from the <code>settlement_limit</code> table) or if a custom exchange rate (<code>exchange_rate_type = 'Custom'</code>) is used.</li>
+                            <li>There are two levels of approval flags within the <code>cambio_orders</code> table for M&T: <code>is_order_approved_by_trade_admin_1</code> (for the first M&T approver) and <code>is_order_approved_by_trade_admin_2</code> (for a senior M&T member, potentially Head of Department).</li>
+                            <li>The <code>above_order_limit_status</code> field also tracks the status of orders exceeding limits.</li>
+                            <li>The M&T team uses the "Cambio > Cambio Order for Approval" screen in CMP to review and act on these orders. They have the authority to adjust the <code>exchange_rate</code> at this stage if necessary.</li>
+                            <li>The <code>updateStatusAboveSettlementLimits</code> function in <code>app/Services/CambioAdminOrderService.php</code> likely handles the backend logic for these approval updates.</li>
+                            <li>M&T staff performing these approvals are also required to undergo OTP verification for their approval action to be logged.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Client OTP Verification (Conditional):</strong>
+                        <ul>
+                            <li>This step is mandatory if the order was initially placed by Mayberry staff (e.g., a Sales advisor) or if the Markets & Trading team amended the exchange rate during their approval process.</li>
+                            <li>An email containing a verification link is automatically sent to the client's registered email address.</li>
+                            <li>The client clicks the link, which directs them to a public verification page (this page does not require a full client portal login). The client then receives an OTP via email or SMS and enters it on this page.</li>
+                            <li>Upon successful OTP verification, the <code>is_otp_verified</code> flag in the <code>cambio_orders</code> table is set to 1 (true), and the <code>otp_verified_at</code> timestamp is recorded. The <code>order_status</code> typically changes to 'Verified'.</li>
+                            <li>Details of the OTP attempt (success/failure) are also logged in the <code>cr_otp_verification</code> table.</li>
+                            <li><strong>Bypass Option:</strong> Super-administrators (e.g., Operations Heads) have a setting in CMP that allows them to disable OTP verification for specific clients if those clients consistently face issues receiving or validating OTPs. This is a control that needs careful management.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Order Execution (CMP):</strong>
+                        <ul>
+                            <li>Once all necessary internal approvals (Compliance, M&T) and client OTP verification (if it was required) are completed, the order is considered "Executed" within the CMP system.</li>
+                            <li>At this critical point, the <code>updateOrderAccountingEntries</code> function in <code>app/Services/CambioOrderService.php</code> (CMP backend) is triggered. This function makes a real-time API call to the CRM system.</li>
+                            <li>The purpose of this API call is to post the initial accounting entries (debits and credits to relevant General Ledgers and sub-ledgers) related to the Cambio trade into the CRM.</li>
+                            <li>The <code>order_status</code> in the <code>cambio_orders</code> table is updated to 'Executed'.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>2.2.3. Trade Settlement (Operations Team using CRM & Banking Platforms)</h4>
+                <p>After an order is marked 'Executed' in CMP and the initial accounting entries have been posted to CRM, the Operations team (specifically the Payments/Settlements unit, e.g., DawnMarie Williams, April Green) takes over to manage the actual movement of funds.</p>
+                 <ol>
+                    <li><strong>Payment/Receipt Processing in CRM:</strong>
+                        <ul>
+                            <li>Operations staff access the CRM, typically navigating to a screen like "Settlement > View CMP Accounting Entries."</li>
+                            <li>They filter the view by "Module: Cambio" and usually by "Status: Executed" (or look for transactions awaiting settlement actions).</li>
+                            <li>For a specific Cambio order selected from this list, they will click either:
+                                <ul>
+                                    <li><strong>"Create Payment":</strong> If Mayberry needs to pay funds out to the client (e.g., the client sold FCY to Mayberry and is due JMD, or client bought FCY and is due the FCY to their external account).</li>
+                                    <li><strong>"Create Receipt":</strong> If Mayberry is due to receive funds from the client (e.g., the client bought FCY from Mayberry and needs to pay JMD, or sold FCY and Mayberry is receiving it into its accounts).</li>
+                                </ul>
+                            </li>
+                            <li>The CRM screen for creating payments/receipts often pre-fills most details from the corresponding Cambio order data that was pushed from CMP. Operations staff will confirm or enter:
+                                <ul>
+                                    <li>Payment type (e.g., local wire, international wire, cheque).</li>
+                                    <li>Payment reference number (from the banking transaction).</li>
+                                    <li>Nostro account details (if Mayberry is paying from or receiving to its own bank accounts held with correspondent banks).</li>
+                                    <li>A clear narrative for the transaction (e.g., "Payment via [Bank Name] to [Beneficiary Name] for Cambio Order ID [Order ID]").</li>
+                                </ul>
+                            </li>
+                            <li>They attach supporting documentation to this CRM record, such as the Transaction Verification Form (TVQ - which would have been uploaded earlier by the Verification team to the associated payment request in CMP during the "Pay to Cambio" workaround or similar checks) and any indemnity forms (for 3rd party payments).</li>
+                            <li>Saving this action in CRM creates or updates records in the <code>pr_transaction</code> and <code>pr_transaction_custom</code> tables. This step of creating a payment/receipt in CRM might also have its own internal approval workflow within CRM if configured.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Actual Fund Movement:</strong> Concurrently or subsequently, the Operations team uses external banking platforms (online banking portals of various banks) to make the actual JMD or FCY payments or to confirm receipt of funds.</li>
+                    <li><strong>Final Settlement Update (CRM to CMP):</strong>
+                        <ul>
+                            <li>Once the payment or receipt is fully processed and approved within CRM (indicated by the <code>approved_at</code> timestamp in the <code>pr_transaction</code> table in CRM), the CRM system (or an automated process triggered by this approval) calls a designated CMP API.</li>
+                            <li>This API call updates the settlement flags in the <code>cambio_orders</code> table in CMP: <code>settled_by_mil</code> (if Mayberry's part of the fund movement is completed) and <code>settled_by_counter_party</code> (if the client's part, like sending funds, is confirmed).</li>
+                            <li>Following these flag updates, the <code>order_status</code> in the <code>cambio_orders</code> table is then updated to 'Settled'.</li>
+                            <li><em>Note on Timestamps:</em> The <code>settled_at</code> and <code>settled_by</code> columns in the <code>cambio_orders</code> table are often NULL or not reliably used. The primary and more accurate timestamp for when settlement is considered complete is taken from the <code>pr_transaction.approved_at</code> field in the CRM database.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+
+                <h4>2.2.4. Order Statuses in <code>cambio_orders.order_status</code></h4>
+                <p>The <code>order_status</code> field in the <code>cambio_orders</code> table tracks the lifecycle of an FX order. Key statuses include:</p>
+                <ul>
+                    <li><strong>New:</strong> The initial status of an order once entered into CMP, awaiting client OTP verification (if applicable) or internal review and approvals.</li>
+                    <li><strong>Verified:</strong> Indicates that the client has successfully verified the order via the OTP mechanism. This status applies to staff-initiated or staff-modified orders.</li>
+                    <li><strong>Checked:</strong> An internal status indicating the order has been reviewed by the Cambio department or Operations team (an internal checkpoint before further processing).</li>
+                    <li><strong>Approved by M&T:</strong> This is not a distinct status value in <code>order_status</code> but is rather represented by the state of approval flags like <code>is_order_approved_by_trade_admin_1</code> and <code>is_order_approved_by_trade_admin_2</code> being true.</li>
+                    <li><strong>Pending Approval from Compliance:</strong> This state is typically indicated by other fields such as <code>world_check_status</code> showing a potential issue or <code>block_order_status</code> being set, routing the order to the Compliance queue.</li>
+                    <li><strong>Executed:</strong> All necessary internal approvals (Compliance, Markets & Trading) and client OTP verification (if required) are complete. Crucially, at this stage, the initial accounting entries for the trade have been successfully posted to the CRM system. The trade is considered live and binding.</li>
+                    <li><strong>Settled:</strong> The final status indicating that the funds movement (both payment and receipt legs of the transaction) has been fully processed and confirmed as completed within the CRM system, and this status has been updated back to CMP.</li>
+                    <li><strong>Expired:</strong>
+                        <ul>
+                            <li>This status is applied if client OTP verification is not completed within the allocated time window (e.g., ~1 hour).</li>
+                            <li>It can also apply if M&T approval is not obtained within their designated processing window.</li>
+                            <li>A batch job (scheduled task) runs periodically (e.g., every 10 minutes), checking the <code>expiry_date</code> column in the <code>cambio_orders</code> table. If the current date/time has passed the <code>expiry_date</code>, the job updates the <code>order_status</code> to 'Expired'.</li>
+                            <li>Expired orders cannot be processed further and must be re-entered by the client or staff if they still wish to proceed with the trade.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Cancelled:</strong> The order has been cancelled, typically before it reaches the 'Executed' status. Cancellations can be initiated by the client or by Mayberry staff.</li>
+                    <li><strong>Rejected:</strong> The order has been rejected by either the Markets & Trading team (e.g., due to rate disagreements, limit issues) or the Compliance team (e.g., due to AML concerns). A rejected order must be re-entered if the client wishes to proceed, potentially with modifications.</li>
+                    <li><strong>Deleted:</strong> The order has been logically deleted from the system. This is usually a soft delete, meaning the record still exists in the database but has its <code>deleted_at</code> timestamp set, effectively removing it from active views and processing.</li>
+                </ul>
+            </section>
+
+            <section id="detailedSpecificTransactions-content" class="content-section">
+                <h3>2.3. Specific Cambio Transaction Types and Management</h3>
+                <h4>2.3.1. Cross-Currency Trades</h4>
+                <p><strong>Definition:</strong> These are FX transactions made directly between two foreign currencies, without the Jamaican Dollar (JMD) being one of the currencies in the pair (e.g., a client wants to buy Euros using their US Dollars, or sell GBP to receive CAD).</p>
+                <p><strong>Initiation & Execution:</strong></p>
+                <ul>
+                    <li>Typically handled by the Markets & Trading (M&T) team directly in CMP. They would manually input the agreed-upon cross-rate for the transaction.</li>
+                    <li>These trades are often marked with the <code>executed_on_citifx</code> flag in the <code>cambio_orders</code> table, indicating they are likely settled via Mayberry's correspondent banking relationship with Citibank or a similar international FX provider.</li>
+                </ul>
+                <p><strong>Client Verification:</strong> Generally, client OTP verification is <strong>not</strong> involved for these M&T-initiated internal or proprietary cross-currency trades, as they are often for Mayberry's own account or for institutional clients where different verification protocols might apply.</p>
+                <p><strong>Profit/Loss Calculation:</strong> The system calculates profit or loss for each leg of the cross-currency transaction. This is done by comparing the transaction rates against the respective JMD "system rates" for each of the foreign currencies involved. The <code>cross_trade</code> flag in the <code>cambio_orders</code> table is set to 1 to identify these transactions.</p>
+                <p><strong>CMP User Interface:</strong> When entering a cross-currency trade, staff select the two foreign currencies involved. Even though JMD is not directly part of the client's currency flow, the system still calculates a JMD equivalent value for internal profit & loss tracking against the system rates.</p>
+
+                <h4>2.3.2. BOJ Surrender Process</h4>
+                <p><strong>Requirement:</strong> Mayberry is mandated by the Bank of Jamaica (BOJ) to surrender 15% of its total commercial FX purchases from the previous trading day. This calculation excludes inter-broker trades and only applies to FX bought from the public.</p>
+                <p><strong>Process in CMP (Navigation: Cambio > BOJ Surrender > Place Order):</strong></p>
+                <ol>
+                    <li><strong>Rate & Amount Entry (Manual by Treasury/Markets Team, e.g., Mark Ormsby):</strong>
+                        <ul>
+                            <li><strong>Weighted Average Rate:</strong> The BOJ's official midday sell rate for USD from the previous trading day is manually obtained. This rate is typically sourced from the BOJ website (Daily FX Spot Trading Summary, specifically the non-cash USD sell rate) or via email correspondence from the BOJ. This rate is then entered into the designated field in the CMP surrender module.</li>
+                            <li><strong>Surrender Amount (USD):</strong> The 15% USD equivalent amount to be surrendered is manually calculated by Mayberry staff (or taken directly from BOJ's communication if they provide the figure). This USD amount is entered into CMP. The system then calculates the JMD equivalent based on the BOJ rate entered.</li>
+                            <li><em>Note on Manual Entry:</em> Manual entry of the surrender amount is preferred over relying on a system calculation (which was reported as sometimes inaccurate). This allows for verification against BOJ's figures and provides an opportunity to correct any discrepancies before processing the surrender.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Submission:</strong> Clicking the "Process Surrender" button in CMP creates a new order record in the <code>cambio_orders</code> table. This order is specifically identified with <code>order_type = 'Surrender'</code> and <code>order_source_system = 'Surrender'</code>. This action automatically updates the Cambio blotter and does not require further internal approvals within CMP for its creation (as it's a regulatory fulfillment).</li>
+                </ol>
+                <p><strong>Payment & Accounting:</strong> The actual JMD payment to the BOJ is processed by the Operations team on the next business day using their external banking platform. This payment is then recorded in the CRM system, similar to how other Cambio settlements are handled, generating standard accounting entries.</p>
+
+                <h4>2.3.3. "Pay to Cambio" Workaround Process</h4>
+                <p><strong>Necessity:</strong> This entire process exists as a workaround because the CMP feature designed to directly debit a client's Mayberry investment account (e.g., portfolio cash balance) for funding a Cambio purchase is <strong>not functional</strong>.</p>
+                <p><strong>Procedure:</strong></p>
+                <ol>
+                    <li>A Mayberry staff member (e.g., Sales advisor, Client Relations, or Operations staff) initiates a standard client payment request. This is done via the CMP navigation: <strong>More > Payment Request > Client Payment Request</strong>.</li>
+                    <li>Within this payment request, the payment instruction is specifically set to <strong>"Pay to MIL Cambio."</strong> This directs the funds to Mayberry's own Cambio-specific JMD bank account.</li>
+                    <li>The amount of this payment request must be the exact JMD equivalent required for the client's intended FX purchase (plus any applicable fees).</li>
+                    <li>Supporting documentation is uploaded to this payment request. This typically includes the client's email instruction authorizing the FX trade and an account statement (or similar proof) showing sufficient JMD funds in their Mayberry investment account to cover the "Pay to Cambio" transfer.</li>
+                    <li>This "Pay to Cambio" payment request then goes through its own multi-step approval workflow within the CMP's payment module. This approval chain can potentially involve the Sales Head, Operations Processing, Markets & Trading, and the Verification Team (for TVQ - Transaction Verification Form - checks).</li>
+                    <li>Once this "Pay to Cambio" payment is fully approved and settled (i.e., the JMD has been successfully moved from the client's investment account to Mayberry's Cambio JMD bank account), the funds are considered available to proceed with the actual FX trade.</li>
+                    <li>The flag <code>is_pay_to_mil_cambio_completed</code> in the main <code>cambio_orders</code> table might be used to track the completion of this prerequisite funding step before the FX order itself can be fully processed.</li>
+                </ol>
+                <p><strong>Impact:</strong> This workaround is a significant source of operational inefficiency. It adds multiple manual steps, requires separate approvals, and introduces delays to the overall Cambio transaction processing time for clients wishing to fund trades from their Mayberry accounts.</p>
+
+                <h4>2.3.4. Live Trading</h4>
+                <p><strong>Functionality:</strong> This feature allows clients to initiate FX trades themselves directly via the Client Portal (CP) or the Mobile App, even outside of Mayberry's normal FX trading hours (e.g., evenings, weekends).</p>
+                <p><strong>Rates:</strong> Live trading uses pre-set "live trading" rates. These rates are typically wider (i.e., less favorable to the client, with a larger spread) than the standard board or contract rates offered during market hours. These specific rates are stored in the <code>cambio_live_rates</code> table in the CMP database.</p>
+                <p><strong>Order Type:</strong> Orders placed through this facility are flagged with <code>order_type = 'Live Trading'</code> in the <code>cambio_orders</code> table, distinguishing them from regular trades.</p>
+                <p><strong>Activity Level:</strong> This feature is reportedly not very actively used by Mayberry's clients.</p>
+
+                <h4>2.3.5. Order Deletion and Cancellation</h4>
+                <ul>
+                    <li><strong>Non-Executed Orders (e.g., status New, Verified, Checked):</strong>
+                        <ul>
+                            <li>These orders can be deleted directly within the CMP interface by authorized Mayberry staff. This authority is typically restricted to personnel in the Markets & Trading department (e.g., department heads) or senior Operations staff (e.g., Operations heads).</li>
+                            <li>This action performs a "soft delete" by setting the <code>deleted_at</code> timestamp in the <code>cambio_orders</code> table. The record remains in the database but is hidden from active views and processing.</li>
+                            <li>An audit trail for this deletion action by staff is typically logged in the <code>worker_activity_logs</code> table, capturing who performed the deletion and when.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Executed Orders (status Executed or Settled):</strong>
+                        <ul>
+                            <li>These orders <strong>cannot</strong> be deleted or directly reversed by Mayberry staff using the standard CMP front-end functionalities. This is because accounting entries have already been posted to CRM, and the trade is considered legally binding.</li>
+                            <li>If an executed order needs to be nullified (e.g., due to a significant error, client dispute agreed by Mayberry), a formal request process must be followed. This involves obtaining internal Mayberry approval (e.g., from senior management like Nicole Walfall-Wyatt, VP Operations) and then sending the request to the IT vendor/support team.</li>
+                            <li>The vendor team then typically performs a soft delete by running a database script to set the <code>deleted_at</code> flag on the relevant <code>cambio_orders</code> record.</li>
+                            <li>This vendor-executed deletion is tracked via the JIRA ticket raised for the request and through email correspondence. There is no direct CMP system audit trail for these vendor-executed deletions, which is an identified gap.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Reversal Functionality (Desired Improvement):</strong> Operations and other teams have expressed a strong need for a proper "reverse" functionality within CMP for executed orders. Ideally, such a function would automatically create contra-accounting entries in CRM and appropriately adjust any related balances or positions, rather than just soft-deleting the original record. This would improve data integrity and reduce manual reconciliation efforts for erroneous executed trades.</li>
+                </ul>
+            </section>
+
+            <section id="detailedCompliance-content" class="content-section">
+                <h3>2.4. Compliance Involvement in Cambio</h3>
+                <p>The Compliance team plays a crucial role in overseeing Cambio transactions to ensure adherence to regulatory requirements and internal policies, particularly concerning Anti-Money Laundering (AML) and Counter-Financing of Terrorism (CFT).</p>
+                <h4>World Check Screening (for Wire Transfers):</h4>
+                <ul>
+                    <li>When a Cambio order involves an outgoing wire transfer, the <code>checkUserForOutgoingWire</code> function (within <code>app/Services/CambioOrderService.php</code>) is invoked. This function dispatches a <code>TransactionMonitoringJob</code>.</li>
+                    <li>This job makes an asynchronous API call to the World Check service (<code>POST /api/v1/world-check/screening-request</code>), sending the beneficiary details (name, address, etc.) for screening against global watchlists, sanctions lists, and Politically Exposed Persons (PEP) databases.</li>
+                    <li>The screening results (e.g., 'Clear', 'Potential Match', risk levels, details of any matches) are received from World Check and stored in the <code>cambio_outgoing_wire_world_check</code> table, linked to the specific Cambio order.</li>
+                    <li>The <code>world_check_status</code> column in the <code>cambio_orders</code> table is updated based on these results (e.g., to 'Clear', 'Potential Match', 'Error').</li>
+                    <li>If a 'Potential Match' or a high-risk flag is returned by World Check, the order is automatically routed to the Compliance team for manual review. They investigate the potential match and decide whether to approve or reject the transaction based on their findings. This review happens within a dedicated queue or screen in CMP.</li>
+                </ul>
+                <h4>High-Risk Clients & Blocked Accounts:</h4>
+                <ul>
+                    <li>If a client's account is flagged internally as high-risk (based on KYC information, transaction patterns, etc.) or is otherwise "blocked" for trading (e.g., due to incomplete KYC documentation, ongoing investigations), the <code>checkBlockTrading</code> function (called during order initiation in <code>CambioOrderService.php</code>) identifies this status.</li>
+                    <li>When such an account is detected, the <code>block_order_status</code> column in the <code>cambio_orders</code> table is updated (e.g., to 'Pending Approval from Compliance' or a similar status indicating a block).</li>
+                    <li>The order is then automatically routed to the Compliance team's queue in CMP. It cannot proceed further until Compliance reviews the case and provides explicit approval or rejection for that specific transaction.</li>
+                </ul>
+                <h4>Transaction Monitoring Reports:</h4>
+                <ul>
+                    <li>CMP provides certain reports that are designed to flag transactions exceeding predefined thresholds or exhibiting unusual patterns. An example given was a report that flags transactions exceeding 20% of a client's stated monthly expected deposit amount.</li>
+                    <li>The Compliance team manually reviews these reports to identify potentially suspicious activity that might warrant further investigation.</li>
+                    <li><strong>Limitation Noted:</strong> The 20% threshold for this specific report is currently hardcoded into the system. This lacks flexibility, as adjusting this threshold requires code changes by the IT team rather than being a configurable parameter for the Compliance department.</li>
+                </ul>
+            </section>
+
+            <section id="detailedReporting-content" class="content-section">
+                <h3>2.5. Reporting & Reconciliation for Cambio</h3>
+                <p>Various reports are generated from CMP and CRM to support operational oversight, financial reconciliation, and decision-making related to Cambio activities.</p>
+                <h4>CMP Reports:</h4>
+                <ul>
+                    <li><strong>Cambio > Transaction Summary:</strong> This report provides an aggregated view of Cambio trading activity for a selected date range, typically broken down by currency. For each currency, it usually shows:
+                        <ul>
+                            <li>Total Amount Sold (FCY sold by Mayberry)</li>
+                            <li>Total Amount Purchased (FCY bought by Mayberry)</li>
+                            <li>Weighted Average Sell Rate achieved by Mayberry</li>
+                            <li>Weighted Average Purchase Rate achieved by Mayberry</li>
+                            <li>Profit Amount (calculated by Mayberry based on its transactions)</li>
+                            <li>Current Inventory (Mayberry's current holding/balance of that FCY)</li>
+                            <li>Total Inventory (observed in the system to often be the same as Current Inventory, representing the net position in that currency)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Cambio > Cambio Blotter:</strong> This report provides a detailed, itemized listing of all individual executed Cambio trades within a specified period. It typically includes details like trade ID, client, currency pair, amounts, rates, and execution time for each transaction.</li>
+                </ul>
+                <h4>CRM Reports (Primarily for Operations & Accounting):</h4>
+                <ul>
+                    <li><strong>Settlement > View CMP Accounting Entries:</strong> This is not strictly a report but a crucial screen/view within CRM used extensively by the Operations team. They filter by "Module: Cambio" to see trades that have been executed in CMP and for which initial accounting entries have been posted. From this screen, they initiate the "Create Payment" or "Create Receipt" process in CRM to finalize the settlement of these trades.</li>
+                    <li>The Accounts team utilizes various General Ledger (GL) and sub-ledger reports generated from CRM for their financial reconciliation processes, ensuring that Cambio transactions are correctly reflected in the company's books.</li>
+                </ul>
+                <h4>Manual Reconciliation (Accounts Team):</h4>
+                <ul>
+                    <li>The Accounts team performs manual reconciliation by extracting transaction reports directly from Mayberry's actual bank accounts (via the respective online banking platforms).</li>
+                    <li>They then compare these bank statements against the General Ledger entries recorded in the CRM system to identify discrepancies, unrecorded items, or timing differences.</li>
+                    <li>A separate reconciliation tool or software is sometimes used to assist in matching transactions between the bank records and the CRM records, especially for high-volume accounts.</li>
+                </ul>
+                <h4>Profit/Loss Reporting (Markets & Trading Team):</h4>
+                <ul>
+                    <li>The Markets & Trading team often exports data from CMP's Transaction Summary or Blotter reports into Microsoft Excel.</li>
+                    <li>They use Excel to perform their own customized daily and monthly Profit & Loss (P&L) tracking and analysis specifically for the Cambio desk's activities. This allows for more flexible analysis than the built-in CMP reports might offer.</li>
+                </ul>
+                <h4>Ad-hoc Reports for Compliance:</h4>
+                <ul>
+                    <li>If the Compliance team requires specific data cuts or analyses that are not available through standard system reports (e.g., for special investigations or regulatory requests), they request ad-hoc reports from the IT team.</li>
+                    <li>These requests for custom reports are typically logged and tracked as JIRA tickets for the IT department to develop and deliver.</li>
+                </ul>
+            </section>
+
+            <section id="detailedDbSchema-content" class="content-section">
+                <h3>2.6. Database Schema Highlights for Cambio</h3>
+                <p>The Cambio operations rely on data stored across two main databases: the CMP database (MariaDB, named <code>bfms_training</code> or <code>prcp</code>) and the CRM database (<code>CRM_bfms_</code> or <code>prcrm</code>).</p>
+                <h4>2.6.1. CMP Database (<code>bfms_training/prcp</code>) Key Tables:</h4>
+                <ul>
+                    <li><strong><code>cambio_orders</code>:</strong> This is the master table for all Cambio transactions. Key columns include:
+                        <ul>
+                            <li><code>id</code> (Primary Key, Order ID), <code>user_id</code> (FK to <code>users</code> if client-initiated via portal), <code>account_number</code> (client's account identifier)</li>
+                            <li>Client snapshot data (denormalized for historical record): <code>first_name</code>, <code>last_name</code>, <code>email</code>, <code>trn</code>, <code>phone_number</code></li>
+                            <li>Settlement flags: <code>settled_by_mil</code> (boolean, Mayberry's leg settled), <code>settled_by_counter_party</code> (boolean, client's leg confirmed)</li>
+                            <li>Order details: <code>order_type</code> (e.g., 'Common Trading', 'Live Trading', 'Surrender'), <code>mil_account_reference_id</code> (Mayberry's bank account for the trade), <code>order_status</code> (e.g., 'New', 'Executed', 'Settled'), <code>world_check_status</code>, <code>instruction</code> (destination for client funds), <code>instruction_2</code> (secondary destination if any), <code>mil_instruction</code> (source of client funds for Mayberry), <code>recipient_account_number</code></li>
+                            <li><code>portfolio_number</code> (client's Mayberry portfolio if applicable), <code>trade_type_id</code> (1 for Buy by MIL, 2 for Sell by MIL), <code>cross_trade</code> (0/1 boolean)</li>
+                            <li>Rate details: <code>exchange_rate</code> (the actual rate applied), <code>exchange_rate_type</code> (e.g., 'Applicable', 'Board', 'Contract', 'Custom')</li>
+                            <li>Amount details: <code>debit_currency</code>, <code>total_debit_amount</code>, <code>credit_currency</code>, <code>total_credit_amount</code>, <code>receivable_amount</code> (net to client), <code>cambio_total_amount</code> (gross from client)</li>
+                            <li>Fee details: <code>cambio_fees</code>, <code>gct_fee</code>, <code>cheque_fee_amount</code>, <code>wire_fee_amount</code>, <code>pre_paid_fee_before</code>, <code>exclude_fee</code> (boolean)</li>
+                            <li>Client & Trade Context: <code>client_type</code> (e.g., retail, institutional), <code>value_date</code> (settlement date), <code>settlement_date_value</code> (duplicate/alternative settlement date field), <code>executed_on_boj</code> (boolean), <code>executed_on_citifx</code> (boolean)</li>
+                            <li>Approval flags: <code>is_order_approved_by_trade_admin_1</code>, <code>is_order_approved_by_trade_admin_2</code>, <code>above_order_limit_status</code></li>
+                            <li>P&L related: <code>order_profit</code> (calculated profit for Mayberry), <code>weighted_average_buy_rate</code> (system rate at trade time), <code>weighted_average_sell_rate</code> (system rate at trade time)</li>
+                            <li>Audit & OTP: <code>created_by</code> (staff ID), <code>created_at</code>, <code>updated_by</code>, <code>updated_at</code>, <code>deleted_at</code> (for soft deletes), <code>place_by_id</code> (staff who placed order), <code>is_otp_verified</code> (boolean), <code>otp_verified_at</code></li>
+                            <li>Compliance: <code>block_order_status</code> (if trade is blocked for compliance review)</li>
+                            <li>Source & Workaround: <code>order_source_system</code> (e.g., 'CMP', 'Client Portal', 'Surrender'), <code>is_pay_to_mil_cambio_completed</code> (boolean, tracks workaround step)</li>
+                            <li>Legacy/Redundant fields: <code>order_id_encrypted</code>, <code>settlement_flag</code>, <code>settled_by</code> (user ID), <code>settled_at</code> (timestamp - often NULL, CRM's <code>pr_transaction.approved_at</code> is more reliable for settlement time).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Rate Tables:</strong>
+                        <ul>
+                            <li><code>cambio_daily_contract_rates</code>: Stores daily contract rates set by Treasury.</li>
+                            <li><code>cambio_daily_board_rates</code>: Stores daily board rates set by Treasury.</li>
+                            <li><code>cambio_boj_rates</code>: Stores daily BOJ rates entered by Operations.</li>
+                            <li><code>cambio_live_rates</code>: Stores rates specifically for live trading via client portal/app.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Instruction Detail Tables:</strong>
+                        <ul>
+                            <li><code>cambio_wire_detail</code>: Stores beneficiary bank details for outgoing wire transfers linked to Cambio orders.</li>
+                            <li><code>cambio_cheque_transfer_details</code>: Stores details for payments made by cheque linked to Cambio orders.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Verification & Compliance Tables:</strong>
+                        <ul>
+                            <li><code>cr_otp_verification</code>: Logs OTP attempts, status, and related details for client verifications of Cambio orders.</li>
+                            <li><code>cambio_outgoing_wire_world_check</code>: Stores the results (matches, risk scores) from World Check API calls for screening outgoing wire transfer beneficiaries.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Configuration Tables:</strong>
+                        <ul>
+                            <li><code>env_properties</code>: Contains system-wide configurations and parameters, including the retail client Cambio transaction threshold (e.g., key = 'RETAIL_CAMBIO_LIMIT', value = '2000').</li>
+                            <li><code>settlement_limit</code>: Stores custom transaction limits, often for institutional clients, which might differ from standard retail limits.</li>
+                        </ul>
+                    </li>
+                    <li><strong>User & Audit Tables:</strong>
+                        <ul>
+                            <li><code>users</code>: Master table for CMP/CP user credentials, roles, and basic profile information for both staff and clients.</li>
+                            <li><code>worker_activity_logs</code>: Provides an audit trail for actions performed by Mayberry staff within the CMP system.</li>
+                            <li><code>user_activity_logs</code>: Provides an audit trail for actions performed by clients within the Client Portal (CP) or Mobile App.</li>
+                            <li><code>cambio_order_memos</code>: Stores notes, comments, and memos added to specific Cambio orders by staff for internal communication or record-keeping.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <h4>2.6.2. Key CRM Database (<code>CRM_bfms_/prcrm</code>) Tables (relevant to Cambio):</h4>
+                <ul>
+                    <li><strong><code>pr_transaction</code>:</strong> This is the master table in CRM for payment and receipt transactions. These records are created in CRM to settle the financial legs of Cambio deals executed in CMP. It contains crucial information such as:
+                        <ul>
+                            <li>Transaction amounts, currencies.</li>
+                            <li>Relevant dates, including <code>created_at</code>, <code>updated_at</code>, and critically, <code>approved_at</code> (which is often used as the definitive settlement timestamp for a trade).</li>
+                            <li>Transaction status within CRM (e.g., pending, approved, processed).</li>
+                            <li>Links to General Ledger (GL) accounts affected by the transaction.</li>
+                            <li>References back to the originating CMP order.</li>
+                        </ul>
+                    </li>
+                    <li><strong><code>pr_transaction_custom</code>:</strong> Stores custom fields or additional details associated with records in the <code>pr_transaction</code> table, providing extensibility.</li>
+                    <li><strong><code>fa_financial_account</code>:</strong> Client financial account master data, including details of their portfolios and investment accounts held with Mayberry.</li>
+                    <li><strong><code>pc_people_companies</code>:</strong> Client demographic master data, storing information about individual and corporate clients.</li>
+                </ul>
+            </section>
+
+            <section id="detailedCodebase-content" class="content-section">
+                <h3>2.7. Codebase Highlights for Cambio (CMP - PHP/Laravel)</h3>
+                <p>The Cambio module within the CMP application (built on PHP/Laravel framework) has several key PHP files, classes, and functions. These are typically located under directories like <code>app/Services/</code>, <code>app/Models/</code>, <code>app/Http/Controllers/</code>, or <code>app/Jobs/</code>.</p>
+                <ul>
+                    <li><strong><code>app/Services/CambioOrderService.php</code>:</strong> This appears to be a central service class orchestrating much of the core logic for Cambio order processing.
+                        <ul>
+                            <li><code>initiateCambioOrder()</code>: This crucial function handles the creation of new Cambio orders. Its responsibilities include:
+                                <ul>
+                                    <li>Calculating applicable fees (e.g., wire fees, commission).</li>
+                                    <li>Performing block trading checks via <code>checkBlockTrading()</code> to see if the client account is restricted.</li>
+                                    <li>Fetching the appropriate exchange rate based on order parameters (board, contract, custom).</li>
+                                    <li>Inserting new records into the <code>cambio_orders</code> table and related detail tables (e.g., <code>cambio_wire_detail</code>).</li>
+                                    <li>Dispatching jobs like <code>TransactionMonitoringJob</code> for asynchronous tasks.</li>
+                                    <li><em>(Noted Risk: DB transaction atomicity (begin, commit, rollback) was reportedly commented out here due to issues with returning validation messages, posing a data consistency risk.)</em></li>
+                                </ul>
+                            </li>
+                            <li><code>checkBlockTrading()</code>: A function called during order placement to check if a client's account is flagged, blocked, or requires special compliance review before trading can proceed.</li>
+                            <li><code>checkUserForOutgoingWire()</code>: This function is responsible for initiating the World Check screening process for outgoing wire transfers. It likely prepares the data and dispatches the <code>TransactionMonitoringJob</code> to make the API call.</li>
+                            <li><code>updateOrderAccountingEntries()</code>: This function is called when a Cambio order is marked as 'Executed' in CMP. Its primary role is to make an API call to the CRM system to post the initial General Ledger (GL) entries related to the trade.</li>
+                        </ul>
+                    </li>
+                    <li><strong><code>app/Services/CambioAdminOrderService.php</code>:</strong> This service class likely handles administrative functions and approval processes related to Cambio orders, particularly those requiring intervention from roles like Markets & Trading.
+                        <ul>
+                            <li><code>updateStatusAboveSettlementLimits()</code>: This function is likely involved in processing approvals from the Markets & Trading team for orders that exceed predefined transaction limits or involve custom (negotiated) exchange rates. It would update the relevant approval flags in the <code>cambio_orders</code> table.</li>
+                        </ul>
+                    </li>
+                    <li><strong><code>app/Models/PostCurrencyCambio.php</code></strong> (or a similarly named Eloquent model representing the <code>cambio_orders</code> table): This model would interact with the <code>cambio_orders</code> table and might contain business logic related to individual orders.
+                        <ul>
+                            <li><code>CalculateProfitAndCommission()</code>: A method likely within this model (or a related service) that contains the specific logic for calculating Mayberry's profit or loss on a Cambio trade. This calculation is typically done against the "system rate" prevailing at the time of the trade.</li>
+                        </ul>
+                    </li>
+                    <li><strong><code>app/Jobs/TransactionMonitoringJob.php</code>:</strong> An asynchronous job (queued task) that handles the actual API call to the World Check service for transaction screening. Using a job prevents the main request thread from being blocked while waiting for the external API response.</li>
+                    <li><strong><code>app/Http/Controllers/Api/Admin/CambioOrderController.php</code></strong> (and similar API controllers for client portal, etc.): These controllers handle incoming HTTP requests from the frontend (Angular application or client portal). They are responsible for:
+                        <ul>
+                            <li>Validating input data from the request.</li>
+                            <li>Calling appropriate methods in the service classes (like <code>CambioOrderService</code>) to perform business logic.</li>
+                            <li>Formatting and returning responses (e.g., JSON) to the frontend.</li>
+                            <li>Specific controllers likely exist for different functional areas or user roles (e.g., admin functions, client-facing functions, approval actions).</li>
+                        </ul>
+                    </li>
+                </ul>
+                <h4>Batch Scripts / Scheduled Commands (within Laravel's Console Kernel - <code>app/Console/Kernel.php</code>):</h4>
+                <ul>
+                    <li>A scheduled command (Laravel Artisan command, run via cron job, likely every 10 minutes) is responsible for managing order expiry. This script queries the <code>cambio_orders</code> table, checks the <code>expiry_date</code> column, and updates the <code>order_status</code> to 'Expired' for any orders that have passed their OTP verification window or M&T approval window without being completed.</li>
+                </ul>
+            </section>
+
+
+            <section id="risks-content" class="content-section">
+                <h2>Identified Risks and Areas for Improvement in Cambio Processes</h2>
+                <p>(Consolidated from Version 1.1 of the source document and various transcripts)</p>
+                <h3>3.1. Business & Operational Risks</h3>
+                <ul>
+                    <li><strong>Operational Inefficiency due to "Pay to Cambio" Workaround:</strong> The necessity of this manual, multi-step process (initiating a separate payment request in CMP to move funds from a client's investment account to Mayberry's Cambio account) significantly delays transactions, increases operational overhead for staff, and can be confusing for clients. It's a direct result of the non-functional direct debit feature.</li>
+                    <li><strong>Manual Rate Entry Errors:</strong> The daily reliance on manual input for BOJ rates (by Operations), and Mayberry's Board and Contract rates (by Treasury) into CMP introduces a high potential for human error. Incorrect rates can lead to inaccurate trade executions, incorrect pricing for clients, and miscalculated profitability.</li>
+                    <li><strong>BOJ Surrender Calculation Inaccuracy & Manual Override:</strong> The system's feature to automatically calculate the 15% BOJ surrender amount is reportedly unreliable or not trusted. This forces staff to perform manual calculations and entry, which, while allowing for verification against BOJ figures, is also prone to error if not meticulously cross-verified.</li>
+                    <li><strong>Client Experience Issues:</strong>
+                        <ul>
+                            <li><strong>OTP Verification Problems:</strong> Clients reportedly face issues receiving or validating OTPs, leading to frustration and delays in trade execution, especially for time-sensitive transactions.</li>
+                            <li><strong>Delays in Trade Execution:</strong> The combination of multi-step manual approvals (Compliance, M&T), the "Pay to Cambio" workaround, and other system inefficiencies can lead to significant delays in the overall trade execution lifecycle.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Data Integrity & Accuracy Concerns:</strong>
+                        <ul>
+                            <li><strong>Duplicate Client Entries in CMP:</strong> The presence of duplicate client records (often with minor name variations but same TRN/email) can lead to confusion during order entry, incorrect client selection, and potential misapplication of funds or communications.</li>
+                            <li><strong>Client Account Balance Discrepancies:</strong> General mentions of occasional discrepancies in client account balances within the BFMS/CMP system could impact the funding of Cambio trades if available balances are not accurately reflected.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Audit Trail Gaps & Reliability:</strong>
+                        <ul>
+                            <li><strong>Deletion of Executed Orders by Vendor:</strong> When executed Cambio orders are deleted via vendor-run database scripts (due to lack of in-app reversal functionality), there's no direct system audit trail within CMP for this critical action. Reliance on JIRA tickets and email correspondence for tracking is insufficient from a robust audit perspective.</li>
+                            <li><strong>Unreliable Settlement Timestamps in CMP:</strong> The <code>settled_by</code> and <code>settled_at</code> columns in the <code>cambio_orders</code> table are reportedly not reliably populated or are often NULL. This makes tracking precise settlement details directly within CMP difficult, forcing reliance on CRM data (<code>pr_transaction.approved_at</code>).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Limited Automation & Manual Handoffs:</strong> Many steps in the Cambio process, including inter-departmental handoffs (e.g., Sales to M&T, Operations to Compliance) and reconciliations, appear to be manual. This increases processing time, the risk of human error, and operational costs.</li>
+                    <li><strong>Compliance Overheads & Inflexibility:</strong> While necessary, manual review by the Compliance team for various scenarios (World Check hits, high-risk clients, threshold breaches) adds to the overall processing time. The hardcoding of certain compliance monitoring thresholds (e.g., 20% deposit variance) limits flexibility.</li>
+                </ul>
+                <h3>3.2. Technical Risks & System Limitations</h3>
+                <ul>
+                    <li><strong>Non-Functional Direct Debit for Cambio Funding:</strong> The "Customer Account (Portfolio)" option within CMP, intended to allow direct debit from a client's investment account to fund Cambio trades, is not working. This is the root cause of the inefficient "Pay to Cambio" workaround.</li>
+                    <li><strong>Lack of True DB Transaction Atomicity (<code>initiateCambioOrder</code>):</strong> It was confirmed that database transaction logic (<code>DB::beginTransaction()</code>, <code>commit()</code>, <code>rollback()</code>) in the critical <code>initiateCambioOrder</code> service method was commented out in the production environment. This was reportedly due to difficulties in returning specific validation messages for wire/cheque details from within a transaction block. This absence of atomicity poses a significant risk of partial data insertion (e.g., an order record created but related detail records failing) and data inconsistency if any database operation fails after a preceding one has succeeded during the order creation process. The current mitigation of inserting orders with an initial <code>deleted_at</code> flag, which is then cleared upon successful completion of all steps, is a workaround and not a substitute for true atomic transactions.</li>
+                    <li><strong>Orphaned Data Potential:</strong> Directly related to the lack of atomicity, failures during the multi-table insert process for a new Cambio order (e.g., inserts into <code>cambio_orders</code>, then <code>cambio_wire_detail</code>, then <code>cambio_cheque_transfer_details</code>) could lead to orphaned records if the <code>deleted_at</code> flag mechanism isn't perfectly managed across all possible failure points within the order creation logic.</li>
+                    <li><strong>Hardcoded Thresholds for Monitoring:</strong> The 20% threshold used in a specific transaction monitoring report for Compliance is hardcoded in the system's logic. This makes it inflexible, requiring code changes and deployment by IT to adjust, rather than being a configurable parameter managed by business users.</li>
+                    <li><strong>System Stability & Performance Issues:</strong> General mentions of BFMS/CMP issues such as slow loading times, random user logouts, and "bad gateway" errors were reported. These stability and performance problems can directly impact the efficiency and usability of the Cambio module for staff.</li>
+                    <li><strong>OTP Verification Bypass Security Concern:</strong> The ability for super-administrators to disable OTP verification on a per-client basis, while potentially useful for troubleshooting persistent client OTP issues, could be a security risk if not tightly controlled, audited, and used sparingly with proper justification.</li>
+                    <li><strong>World Check API Downtime/Error Handling:</strong> If the external World Check API is down or returns errors, the current process involves Mayberry staff being informed and potentially manually "flagging off" the flow. This might lack an automated retry mechanism for transient issues or robust error handling and notification within the system, potentially leading to delays or missed screenings.</li>
+                    <li><strong>Complexity and Risks in Data Synchronization (CMP-CRM):</strong> Data related to a single Cambio transaction is spread across both the CMP and CRM systems, relying on API calls for synchronization (e.g., posting accounting entries from CMP to CRM, updating settlement status from CRM to CMP). Failures or delays in these API calls could lead to data inconsistencies between the two systems. Examples include an order being marked 'Executed' in CMP but the corresponding accounting entries failing to post in CRM, or settlement being completed in CRM but the status not updating back to CMP in a timely manner.</li>
+                    <li><strong>Lack of Robust Built-in Reporting:</strong> Business users, particularly the Markets & Trading team for P&L analysis and the Accounts team for reconciliation, often resort to manual data extraction from CMP/CRM (e.g., exporting to Excel) for their analyses. This indicates limitations in the built-in reporting capabilities, flexibility, or user-friendliness of the system's reporting tools.</li>
+                    <li><strong>API Security for Unauthenticated Proprietary Order Approvals:</strong> The mechanism for approving proprietary orders (prop orders) via email links that use URL tokens (as described for the <code>updateStatusAboveSettlementLimits</code> function in <code>CambioAdminOrderService.php</code>) needs extremely robust security measures. This includes strong, unpredictable token generation, strict token expiry policies, and ensuring tokens are single-use to prevent unauthorized access or replay attacks, even if protected by a middleware like <code>URLTokenAuthorizer</code>. Furthermore, audit trails for these approvals reportedly rely on separate server request/response logs rather than being integrated into the primary <code>worker_activity_logs</code> with a specific user ID, making auditing less straightforward.</li>
+                </ul>
+            </section>
+
+            <section id="faq-content" class="content-section">
+                <h2>Frequently Asked Questions (FAQ)</h2>
+                <h3><span class="priority-high">High Priority</span></h3>
+                <div class="faq-item">
+                    <p class="faq-question">1. What is the "Pay to Cambio" workaround and why is it necessary?</p>
+                    <p class="faq-answer">It's a manual process where a client payment request is created in CMP to transfer JMD from a client's Mayberry investment account to Mayberry's Cambio bank account. It's necessary because the direct debit feature in CMP for funding Cambio trades from client portfolios is non-functional. <a href="#detailedSpecificTransactions" class="text-sky-600 hover:underline">(Further reading: Section 2.3.3)</a></p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">2. Who is responsible for setting the daily exchange rates in CMP?</p>
+                    <p class="faq-answer">Operations Processing team manually inputs BOJ weighted average rates. The Treasury team manually inputs Mayberry's Board Rates and Contract Rates. (Further reading: <a href="#detailedOverview" class="text-sky-600 hover:underline">Section 2.1</a>, <a href="#detailedOrderInitiation" class="text-sky-600 hover:underline">Section 2.2.1</a>)</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">3. What happens if an executed Cambio order needs to be cancelled or reversed?</p>
+                    <p class="faq-answer">Executed orders cannot be directly deleted or reversed by staff in CMP. A formal request with internal approval must be sent to the IT vendor, who then performs a soft delete via database script. There's a desire for an in-system reversal function. <a href="#detailedSpecificTransactions" class="text-sky-600 hover:underline">(Further reading: Section 2.3.5)</a></p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">4. How are compliance checks like World Check integrated into the Cambio process?</p>
+                    <p class="faq-answer">For outgoing wire transfers, an asynchronous API call is made to World Check to screen beneficiary details. Results are stored in CMP, and potential matches route the order to the Compliance team for manual review. <a href="#detailedCompliance" class="text-sky-600 hover:underline">(Further reading: Section 2.4)</a></p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">5. What is the BOJ Surrender process?</p>
+                    <p class="faq-answer">Mayberry must surrender 15% of its previous day's commercial FX purchases to the Bank of Jamaica. This is processed via a specific module in CMP (Cambio > BOJ Surrender > Place Order) with manual rate and amount entry by Treasury/Markets. <a href="#detailedSpecificTransactions" class="text-sky-600 hover:underline">(Further reading: Section 2.3.2)</a></p>
+                </div>
+                 <div class="faq-item">
+                    <p class="faq-question">6. What is the main risk associated with the <code>initiateCambioOrder</code> function?</p>
+                    <p class="faq-answer">The DB transaction logic (atomicity) was reportedly commented out in production. This means if one part of the order creation fails (e.g., saving wire details after the main order is saved), it could lead to partial data insertion and data inconsistency. (Further reading: <a href="#risks" class="text-sky-600 hover:underline">Section 3.2</a>, <a href="#detailedCodebase" class="text-sky-600 hover:underline">Section 2.7</a>)</p>
+                </div>
+
+                <h3><span class="priority-medium">Medium Priority</span></h3>
+                <div class="faq-item">
+                    <p class="faq-question">7. What are the main applications used for Cambio operations?</p>
+                    <p class="faq-answer">CMP (Customer Management Portal) / BFMS is the primary application for trading and operations. CRM (Customer Relationship Management Portal) is used for client info, accounting, and settlement. CP (Client Portal) & Mobile App are for client self-service. <a href="#applications" class="text-sky-600 hover:underline">(Further reading: Internal Applications)</a></p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">8. When is Client OTP verification required for a Cambio order?</p>
+                    <p class="faq-answer">It's required if the order was initially placed by Mayberry staff or if the Markets & Trading team amended the exchange rate during their approval. <a href="#detailedOrderInitiation" class="text-sky-600 hover:underline">(Further reading: Section 2.2.2)</a></p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">9. How are cross-currency trades handled?</p>
+                    <p class="faq-answer">Typically handled by the Markets & Trading team in CMP. They manually input the cross-rate. These trades are often marked <code>executed_on_citifx</code> and settled via Citibank. Client OTP is generally not involved for these. <a href="#detailedSpecificTransactions" class="text-sky-600 hover:underline">(Further reading: Section 2.3.1)</a></p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">10. What is "Live Trading"?</p>
+                    <p class="faq-answer">It allows clients to initiate FX trades via the Client Portal or Mobile App outside normal FX trading hours, using pre-set "live trading" rates which are typically wider. It's not very actively used. <a href="#detailedSpecificTransactions" class="text-sky-600 hover:underline">(Further reading: Section 2.3.4)</a></p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">11. Which CMP table stores the main details of Cambio orders?</p>
+                    <p class="faq-answer">The <code>cambio_orders</code> table is the master table for all Cambio transactions. <a href="#detailedDbSchema" class="text-sky-600 hover:underline">(Further reading: Section 2.6.1)</a></p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">12. How is settlement information updated between CRM and CMP?</p>
+                    <p class="faq-answer">Once a payment/receipt is fully processed and approved in CRM (<code>pr_transaction.approved_at</code>), CRM calls a CMP API to update settlement flags (<code>settled_by_mil</code>, <code>settled_by_counter_party</code>) and the order status to 'Settled' in the <code>cambio_orders</code> table. <a href="#detailedOrderInitiation" class="text-sky-600 hover:underline">(Further reading: Section 2.2.3)</a></p>
+                </div>
+                 <div class="faq-item">
+                    <p class="faq-question">13. What is the issue with duplicate client entries in CMP?</p>
+                    <p class="faq-answer">Duplicate entries with minor name variations but the same TRN/email can cause confusion, selection errors during order processing, and potential misapplication of trades or communications. (Further reading: <a href="#detailedOrderInitiation" class="text-sky-600 hover:underline">Section 2.2.1</a>, <a href="#risks" class="text-sky-600 hover:underline">Section 3.1</a>)</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">14. Who approves orders that exceed limits or use custom rates?</p>
+                    <p class="faq-answer">The Markets & Trading (Treasury) team is responsible for these approvals. There are typically two levels of M&T approval flags in <code>cambio_orders</code>. <a href="#detailedOrderInitiation" class="text-sky-600 hover:underline">(Further reading: Section 2.2.2)</a></p>
+                </div>
+
+                <h3><span class="priority-low">Low Priority</span></h3>
+                <div class="faq-item">
+                    <p class="faq-question">15. What are some key PHP files involved in the Cambio module in CMP?</p>
+                    <p class="faq-answer"><code>app/Services/CambioOrderService.php</code>, <code>app/Services/CambioAdminOrderService.php</code>, <code>app/Models/PostCurrencyCambio.php</code> (or similar model for <code>cambio_orders</code>), and various API controllers like <code>app/Http/Controllers/Api/Admin/CambioOrderController.php</code>. <a href="#detailedCodebase" class="text-sky-600 hover:underline">(Further reading: Section 2.7)</a></p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">16. What is the <code>checkBlockTrading()</code> function used for?</p>
+                    <p class="faq-answer">It's called during order initiation in <code>CambioOrderService.php</code> to check if a client's account is flagged, blocked, or requires compliance review before trading. (Further reading: <a href="#detailedCodebase" class="text-sky-600 hover:underline">Section 2.7</a>, <a href="#detailedCompliance" class="text-sky-600 hover:underline">Section 2.4</a>)</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">17. How are Cambio-related reports typically used by the Markets & Trading team?</p>
+                    <p class="faq-answer">They often export data from CMP's Transaction Summary or Blotter into Excel to perform their own daily and monthly Profit & Loss (P&L) tracking and analysis. <a href="#detailedReporting" class="text-sky-600 hover:underline">(Further reading: Section 2.5)</a></p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">18. What is the <code>RETAIL_CAMBIO_LIMIT</code> in <code>env_properties</code> table?</p>
+                    <p class="faq-answer">It defines the transaction threshold (e.g., USD 2,000) above which a retail client's Cambio order might require M&T approval for a custom rate. (Further reading: <a href="#detailedOrderInitiation" class="text-sky-600 hover:underline">Section 2.2.1</a>, <a href="#detailedDbSchema" class="text-sky-600 hover:underline">Section 2.6.1</a>)</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">19. What is the role of the <code>TransactionMonitoringJob.php</code>?</p>
+                    <p class="faq-answer">It's an asynchronous job that handles the API call to World Check for transaction screening, preventing the main request from being blocked. <a href="#detailedCodebase" class="text-sky-600 hover:underline">(Further reading: Section 2.7)</a></p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">20. Can super-admins bypass OTP verification for clients?</p>
+                    <p class="faq-answer">Yes, super-admins (e.g., Operations Heads) have a setting in CMP to disable OTP verification for specific clients, though this is a potential security risk if not tightly controlled. (Further reading: <a href="#detailedOrderInitiation" class="text-sky-600 hover:underline">Section 2.2.2</a>, <a href="#risks" class="text-sky-600 hover:underline">Section 3.2</a>)</p>
+                </div>
+                 <div class="faq-item">
+                    <p class="faq-question">21. What is the typical settlement date for Cambio orders?</p>
+                    <p class="faq-answer">The default settlement date (<code>value_date</code>) is T+0 (same day), but options for T+1 and T+2 exist. The exchange rate is based on the trade initiation date. <a href="#detailedOrderInitiation" class="text-sky-600 hover:underline">(Further reading: Section 2.2.1)</a></p>
+                </div>
+                 <div class="faq-item">
+                    <p class="faq-question">22. Which table logs OTP verification attempts?</p>
+                    <p class="faq-answer">The <code>cr_otp_verification</code> table logs OTP attempts and their status for client verifications. (Further reading: <a href="#detailedOrderInitiation" class="text-sky-600 hover:underline">Section 2.2.2</a>, <a href="#detailedDbSchema" class="text-sky-600 hover:underline">Section 2.6.1</a>)</p>
+                </div>
+            </section>
+
+            <section id="conclusion-content" class="content-section">
+                <h2>Conclusion</h2>
+                <p>This document (Version 1.2) provides a highly detailed and restructured overview of Mayberry's Cambio processes and systems. It incorporates comprehensive information on business workflows, system architecture (including key applications like CMP, CRM, and Client Portal/App), detailed process flows (from order initiation to settlement), key database tables and columns (for both CMP and CRM), relevant PHP codebase components within CMP, an extensive list of identified risks (both business/operational and technical), areas for improvement, and a set of Frequently Asked Questions (FAQs). This enhanced knowledge base should significantly aid the IT team, operations staff, compliance personnel, and other stakeholders in understanding the intricacies of the Cambio module, providing effective support, and identifying opportunities for future enhancements and risk mitigation.</p>
+                <p class="mt-4 text-sm text-slate-600"><em>End of Knowledge Base Content.</em></p>
+            </section>
+
+            <div id="noResults" class="hidden text-center py-10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <p class="mt-2 text-lg font-medium text-slate-700">No results found.</p>
+                <p class="text-sm text-slate-500">Try searching for a different term or check your spelling.</p>
+            </div>
+        </main>
+    </div>
+
+    <div id="summaryModal" class="modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <h3 id="summaryModalTitle">Section Summary ✨</h3>
+            <div id="summaryModalBody">
+                <div class="loading-spinner" style="display: none;"></div>
+            </div>
+            <button id="summaryModalCloseButton" class="modal-close-button">Close</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('#navLinks a.sidebar-link');
+            const contentSections = document.querySelectorAll('.content-section');
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            const noResultsDiv = document.getElementById('noResults');
+            let originalContent = new Map();
+
+            // Remove Gemini Modal related elements from DOM as they are not used
+            const summaryModalElement = document.getElementById('summaryModal');
+            if (summaryModalElement) {
+                summaryModalElement.remove();
+            }
+
+            contentSections.forEach(section => {
+                originalContent.set(section.id, section.innerHTML);
+            });
+
+            function setActiveSection(hash, isSearch = false) {
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active-link');
+                });
+
+                let targetSectionId = hash ? hash.substring(1) + "-content" : 'introduction-content';
+                let targetSection = document.getElementById(targetSectionId);
+
+                if (!targetSection && hash) {
+                    const mainCategoryBase = hash.substring(1);
+                    const sectionMappings = {
+                        'introduction': 'introduction-content', 'participants': 'participants-content',
+                        'applications': 'applications-content', 'highLevelProcesses': 'highLevelProcesses-content',
+                        'detailedProcesses': 'detailedOverview-content',
+                        'audioResources': 'audioResources-content', // Added mapping for audio
+                        'risks': 'risks-content', 'faq': 'faq-content', 'conclusion': 'conclusion-content'
+                    };
+                    targetSection = document.getElementById(sectionMappings[mainCategoryBase] || 'introduction-content');
+                    if (mainCategoryBase === 'detailedProcesses' && !hash.includes('detailedOverview')) {
+                        targetSectionId = 'detailedOverview-content';
+                        targetSection = document.getElementById(targetSectionId);
+                    }
+                }
+
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                    const correspondingLinkQuery = hash.startsWith('#detailed') && hash !== '#detailedProcesses' ? hash : '#' + targetSection.id.replace('-content', '');
+                    const correspondingLink = document.querySelector(`#navLinks a[href="${correspondingLinkQuery}"]`);
+
+                    if (correspondingLink) {
+                        correspondingLink.classList.add('active-link');
+                    }
+
+                    if (targetSection.id.startsWith('detailed') && targetSection.id !== 'detailedProcesses-content') {
+                        const parentDetailedLink = document.querySelector('#navLinks a[href="#detailedProcesses"]');
+                        if (parentDetailedLink) parentDetailedLink.classList.add('active-link');
+                    }
+
+                    if (!isSearch) {
+                        const headerHeight = document.querySelector('header').offsetHeight || 70;
+                        const sectionTop = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                        window.scrollTo({ top: sectionTop, behavior: 'smooth'});
+                    }
+                } else {
+                    document.getElementById('introduction-content').classList.add('active');
+                    document.querySelector('#navLinks a[href="#introduction"]').classList.add('active-link');
+                }
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetHash = this.getAttribute('href');
+                    window.location.hash = targetHash;
+                });
+            });
+
+            function handleHashChange() {
+                 setActiveSection(window.location.hash);
+            }
+            window.addEventListener('hashchange', handleHashChange);
+
+            if (window.location.hash) {
+                setActiveSection(window.location.hash);
+            } else {
+                setActiveSection('#introduction');
+            }
+
+            function performSearch() {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                let resultsFound = false;
+                let firstFoundSectionElement = null;
+
+                contentSections.forEach(section => {
+                    if (originalContent.has(section.id)) {
+                        section.innerHTML = originalContent.get(section.id);
+                    } else {
+                        originalContent.set(section.id, section.innerHTML);
+                    }
+                });
+
+                if (searchTerm === "") {
+                    noResultsDiv.classList.add('hidden');
+                    contentSections.forEach(section => section.classList.remove('active'));
+                    setActiveSection(window.location.hash || '#introduction');
+                    return;
+                }
+
+                contentSections.forEach(section => {
+                    const sectionText = section.textContent.toLowerCase();
+                    if (sectionText.includes(searchTerm)) {
+                        highlightTerm(section, searchTerm);
+                        section.classList.add('active');
+                        resultsFound = true;
+                        if (!firstFoundSectionElement) {
+                            firstFoundSectionElement = section;
+                        }
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+
+                if (resultsFound) {
+                    noResultsDiv.classList.add('hidden');
+                    if (firstFoundSectionElement) {
+                        const sectionHash = '#' + firstFoundSectionElement.id.replace('-content', '');
+
+                        window.removeEventListener('hashchange', handleHashChange);
+                        window.location.hash = sectionHash;
+                        setActiveSection(sectionHash, true);
+                        const firstHighlight = firstFoundSectionElement.querySelector('.search-highlight');
+                        if (firstHighlight) {
+                            const headerHeight = document.querySelector('header').offsetHeight || 70;
+                            const elementTop = firstHighlight.getBoundingClientRect().top + window.pageYOffset - headerHeight - 30;
+                            window.scrollTo({ top: elementTop, behavior: 'smooth'});
+                        }
+                        setTimeout(() => window.addEventListener('hashchange', handleHashChange), 0);
+                    }
+                } else {
+                    noResultsDiv.classList.remove('hidden');
+                }
+            }
+
+            function highlightTerm(element, term) {
+                const originalElementHTML = originalContent.get(element.id);
+                if (!originalElementHTML) return;
+
+                const regex = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})(?![^<]*>|[^<>]*<\/(?!span|a|strong|em|code|pre|li|ul|ol|h[1-6]))`, 'gi');
+
+                element.innerHTML = originalElementHTML.replace(regex, `<span class="search-highlight">$1</span>`);
+            }
+
+            searchButton.addEventListener('click', performSearch);
+            searchInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
